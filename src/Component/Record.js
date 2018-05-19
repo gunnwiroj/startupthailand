@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
-import AudioRecorder from 'react-audio-recorder';
-import Button from '@material-ui/core/Button'
+import Button from '@material-ui/core/Button';
+import Result from './Result'
 class Record extends Component{
     constructor(props){
         super(props);
@@ -9,6 +9,7 @@ class Record extends Component{
         }
         this.startRecord = this.startRecord.bind(this);
         this.stopRecord = this.stopRecord.bind(this);
+        
     }
     startRecord(){
         this.setState({isHidden: false});
@@ -20,13 +21,16 @@ class Record extends Component{
         return(
             <div id="Record">
                 <div className="container-fluid">
+                    <div className="col-md-8 col-md-offset-2" style={{paddingTop:"30px",height:"700px"}}>
+                        <Result/>
+                    </div>
                     <div className="col-md-12" style={{textAlign:"center"}}>
                         {this.state.isHidden&&
-                        <Button variant="raised" style={{backgroundColor:"#41C300"}} onClick={this.startRecord}>
+                        <Button variant="fab" style={{backgroundColor:"#41C300",alignItems:"flexend"}} onClick={this.startRecord}>
                             <span><i className="fa fa-microphone" style={{color:"White"}}></i></span>
                         </Button>}
                         {!this.state.isHidden&&
-                        <Button variant="raised" style={{backgroundColor:"#EF0078"}} onClick={this.stopRecord}>
+                        <Button variant="fab" style={{backgroundColor:"#EF0078",alignItems:"flexend"}} onClick={this.stopRecord} >
                             <span><i className="fa fa-stop" style={{color:"White"}}></i></span>
                         </Button>}
                     </div>
@@ -37,3 +41,4 @@ class Record extends Component{
 }
 
 export default Record;
+
